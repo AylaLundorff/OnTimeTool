@@ -23,7 +23,7 @@
         android:paddingLeft="5dp"
         android:background="@drawable/buttonshape"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/newsearch"
+        android:layout_above="@+id/newsearch"
         android:layout_marginBottom="70dp" />
 
 
