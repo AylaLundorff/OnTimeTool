@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:id="@+id/logo"
+        android:src="@drawable/ontimeheader3"
+        android:layout_marginTop="-14dp"
+        android:paddingLeft="0dp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:hint="Wildcard text"
+        android:textColorHint="#969696"
+        android:textColor="#000000"
+        android:id="@+id/editText"
+        android:background="@drawable/searchshape"
+        android:paddingLeft="2dp"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@android:drawable/ic_search_category_default"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp"/>
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:id="@+id/price"
+        android:text="price"
+        android:textColor="#1F1F1F"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:layout_alignTop="@+id/dist"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:id="@+id/dist"
+        android:text="location"
+        android:textColor="#1F1F1F"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:layout_alignTop="@+id/stock"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:id="@+id/stock"
+        android:text="stock"
+        android:textColor="#1F1F1F"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:layout_below="@+id/editText"
+        android:layout_toRightOf="@+id/dist"
+        android:layout_toEndOf="@+id/dist"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="40dp"
+        android:id="@+id/back"
+        android:text="back"
+        android:textColor="#1F1F1F"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
