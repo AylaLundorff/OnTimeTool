@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (scanResult != null) {
-
+            Toast.makeText(MainActivity.this, scanResult.getContents(), Toast.LENGTH_SHORT).show();
         }
     }
 
