@@ -46,6 +46,7 @@ public class StoreActivity extends AppCompatActivity {
         mPhonePlaceholder = (TextView) findViewById(R.id.phone_placeholder);
         mCommercialPlaceholder = (TextView) findViewById(R.id.commercial_placeholder);
         mLogoPlaceholder = (ImageView) findViewById(R.id.store_logo);
+        mLogoPlaceholder = (ImageView) findViewById(R.id.logo_placeholder);
         mBack = (Button) findViewById(R.id.back);
         mNewSearch = (Button) findViewById(R.id.newsearch);
         mNav = (Button) findViewById(R.id.nav);
