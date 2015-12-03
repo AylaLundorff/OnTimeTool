@@ -1,7 +1,7 @@
 package com.example.ayla.ontimetool;
 
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,23 +10,22 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     private EditText mDbEditText, mEanEditText;
     private AutoCompleteTextView mAutoCompleteTextView;
     private WildcardAdapter mWildcardAdapter;
+    private ImageView mLogo;
 
     public final static String DB_TUN_INTENT_KEY = "dbNumber";
     public final static String EAN_INTENT_KEY = "eanNumber";
@@ -48,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
         mDbEditText = (EditText) findViewById(R.id.db);
         mEanEditText = (EditText) findViewById(R.id.ean);
+        mLogo = (ImageView) findViewById(R.id.logo);
+        mLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://www.ontimetool.dk"));
+                startActivity(i);
+            }
+        });
         mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocomplete_text_view);
         mWildcardAdapter = new WildcardAdapter(DatabaseHelper.getInstance().getAll(), getApplicationContext());
         mAutoCompleteTextView.setAdapter(mWildcardAdapter);
@@ -72,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent mIntent = new Intent(MainActivity.this, StoreActivity.class);
+                Intent mIntent = new Intent(MainActivity.this, SearchResultActivity.class);
                 ProductModel mProductModel = (ProductModel) parent.getItemAtPosition(position);
-                mIntent.putExtra(MainActivity.PARCELABLE_INTENT_KEY, mProductModel);
+                mIntent.putExtra(MainActivity.EAN_INTENT_KEY, mProductModel.ean_number);
                 startActivity(mIntent);
             }
         });
