@@ -13,8 +13,8 @@
         android:paddingLeft="0dp"
         android:src="@drawable/ontimeheader3"/>
 
-    <EditText
-        android:id="@+id/editText"
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_text_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
@@ -69,6 +69,7 @@
         android:background="@drawable/buttonshape"
         android:drawableLeft="@android:drawable/ic_search_category_default"
         android:hint="Type EAN number here"
+        android:maxLength="13"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
         android:textColorHint="#969696"/>
@@ -92,7 +93,6 @@
         android:id="@+id/db"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:imeOptions="actionSend"
         android:layout_alignLeft="@+id/dbnummer"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/dbnummer"
@@ -100,6 +100,8 @@
         android:background="@drawable/buttonshape"
         android:drawableLeft="@android:drawable/ic_search_category_default"
         android:hint="Type DB/TUN number here"
+        android:imeOptions="actionSend"
+        android:maxLength="7"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#1F1F1F"
         android:textColorHint="#969696"/>

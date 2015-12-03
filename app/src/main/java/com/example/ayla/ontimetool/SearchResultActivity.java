@@ -5,11 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
     private int dbNumber;
     private long eanNumber;
 
-    private Button mPrice, mDist, mStock;
+    private Button mPrice, mDist, mStock, mBack;
     private List<ProductModel> mProductModels;
 
     @Override
@@ -47,13 +45,6 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
             }
 
         mResultAdapter = new ResultAdapter(mProductModels, SearchResultActivity.this);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductModel mProductModel = (ProductModel) parent.getItemAtPosition(position);
-                Toast.makeText(SearchResultActivity.this, "" + mProductModel.product_name, Toast.LENGTH_SHORT).show();
-            }
-        });
         mListView.setAdapter(mResultAdapter);
 
 
@@ -82,9 +73,11 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
         mPrice = (Button) findViewById(R.id.price);
         mDist = (Button) findViewById(R.id.dist);
         mStock = (Button) findViewById(R.id.stock);
+        mBack = (Button) findViewById(R.id.back);
         mPrice.setOnClickListener(this);
         mDist.setOnClickListener(this);
         mStock.setOnClickListener(this);
+        mBack.setOnClickListener(this);
     }
 
     @Override
@@ -122,6 +115,9 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
                 }
                 mResultAdapter.addList(price_models);
                 break;
+            }
+            case R.id.back: {
+                onBackPressed();
             }
             default:
                 break;

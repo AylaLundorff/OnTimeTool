@@ -1,10 +1,17 @@
 package com.example.ayla.ontimetool;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -74,7 +81,33 @@ public class StoreActivity extends AppCompatActivity {
 
         setStorePicture();
         mAddressPlaceholder.setText(mProductModel.address.street_name + " " + mProductModel.address.street_number + ", " + mProductModel.address.zip_code + " " + mProductModel.address.city_name);
-        mPhonePlaceholder.setText("" + mProductModel.address.phone_number);
+
+        String text = "T. ";
+        StringBuilder mStringBuilder = new StringBuilder(text);
+        int phoneSpanStart = mStringBuilder.length();
+        String mPhoneNumber = "" + mProductModel.address.phone_number;
+        mStringBuilder.append(mPhoneNumber);
+        int phoneEndSpan = mStringBuilder.length();
+
+        ClickableSpan mClickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + mProductModel.address.phone_number));
+                startActivity(intent);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                ds.setUnderlineText(true);
+                ds.setColor(Color.BLUE);
+            }
+        };
+
+        SpannableString mSpannableString = new SpannableString(mStringBuilder);
+        mSpannableString.setSpan(mClickableSpan, phoneSpanStart, phoneEndSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mPhonePlaceholder.setText(mSpannableString);
+        mPhonePlaceholder.setMovementMethod(LinkMovementMethod.getInstance());
         mCommercialPlaceholder.setText(mProductModel.commercial_text);
     }
 
