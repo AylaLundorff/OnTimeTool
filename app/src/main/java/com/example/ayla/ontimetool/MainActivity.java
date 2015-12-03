@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private AutoCompleteTextView mAutoCompleteTextView;
     private WildcardAdapter mWildcardAdapter;
     private ImageView mLogo;
+    private Button mButtonScan;
 
     public final static String DB_TUN_INTENT_KEY = "dbNumber";
     public final static String EAN_INTENT_KEY = "eanNumber";
@@ -47,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         mDbEditText = (EditText) findViewById(R.id.db);
         mEanEditText = (EditText) findViewById(R.id.ean);
+        mButtonScan = (Button) findViewById(R.id.buttonscan);
+        mButtonScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+                integrator.initiateScan();
+            }
+        });
         mLogo = (ImageView) findViewById(R.id.logo);
         mLogo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
         Configuration.Builder configurationBuilder = new Configuration.Builder(this);
         configurationBuilder.addModelClasses();
         ActiveAndroid.initialize(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (scanResult != null) {
+
+        }
     }
 
     private void populateDb() {
