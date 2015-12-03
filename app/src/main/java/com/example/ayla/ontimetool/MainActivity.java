@@ -84,9 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 ProductModel mProductModel = (ProductModel) parent.getItemAtPosition(position);
                 mIntent.putExtra(MainActivity.EAN_INTENT_KEY, mProductModel.ean_number);
                 startActivity(mIntent);
+
+                mAutoCompleteTextView.getText().clear();
             }
         });
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        mAutoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    return true;
+                }
+                return true;
+            }
+        });
 
         mEanEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

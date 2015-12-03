@@ -11,7 +11,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +23,7 @@ public class StoreActivity extends AppCompatActivity {
 
     private ProductModel mProductModel;
     private TextView mAddressPlaceholder, mPhonePlaceholder, mCommercialPlaceholder;
-    private ImageView mLogoPlaceholder;
+    private ImageView mLogoPlaceholder, mLinkLogo;
     private Button mBack, mNewSearch, mNav;
 
     private static final String STARK = "stark";
@@ -46,7 +45,15 @@ public class StoreActivity extends AppCompatActivity {
         mPhonePlaceholder = (TextView) findViewById(R.id.phone_placeholder);
         mCommercialPlaceholder = (TextView) findViewById(R.id.commercial_placeholder);
         mLogoPlaceholder = (ImageView) findViewById(R.id.store_logo);
-        mLogoPlaceholder = (ImageView) findViewById(R.id.logo_placeholder);
+        mLinkLogo = (ImageView) findViewById(R.id.logo_placeholder);
+        mLinkLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://www.ontimetool.dk"));
+                startActivity(i);
+            }
+        });
         mBack = (Button) findViewById(R.id.back);
         mNewSearch = (Button) findViewById(R.id.newsearch);
         mNav = (Button) findViewById(R.id.nav);

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_searchresults);
 
         initializeViews();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null)
@@ -124,12 +126,13 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
             }
             case R.id.back: {
                 onBackPressed();
+                break;
             }
             case R.id.logo: {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("http://www.ontimetool.dk"));
                 startActivity(i);
-
+                break;
             }
             default:
                 break;
