@@ -1,12 +1,14 @@
+<!-- Base application theme. -->
+<resources>
 
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
 
-    <!-- Base application theme. -->
-    <resources>
+    </style>
 
-        <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-        </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    </resources>
-        <!-- Customize your theme here. -->
+</resources>
+    <!-- Customize your theme here. -->
 
