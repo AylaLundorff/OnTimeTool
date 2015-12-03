@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/item_pic_placeholder"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/screws"/>
+
+    <TextView
+        android:id="@+id/description_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/item_pic_placeholder"
+        android:text="NKT Basic Screw with Ruspert 1000 surface. TX20 5.0 x 100/55 mm. 200 pcs"/>
+
+    <TextView
+        android:id="@+id/price_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description_placeholder"
+        android:layout_toRightOf="@+id/item_pic_placeholder"
+        android:padding="5dp"
+        android:text="Price: 120 DKK"/>
+
+    <TextView
+        android:id="@+id/distance_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price_placeholder"
+        android:layout_toRightOf="@+id/item_pic_placeholder"
+        android:padding="5dp"
+        android:text="Location: 15 KM"/>
+
+</RelativeLayout>

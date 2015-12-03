@@ -1,10 +1,18 @@
 package com.example.ayla.ontimetool;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +25,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private EditText mDbEditText, mEanEditText;
+    private AutoCompleteTextView mAutoCompleteTextView;
+    private WildcardAdapter mWildcardAdapter;
+
     public final static String DB_TUN_INTENT_KEY = "dbNumber";
     public final static String EAN_INTENT_KEY = "eanNumber";
     public final static String PARCELABLE_INTENT_KEY = "parcelableObj";
@@ -37,6 +48,38 @@ public class MainActivity extends AppCompatActivity {
 
         mDbEditText = (EditText) findViewById(R.id.db);
         mEanEditText = (EditText) findViewById(R.id.ean);
+        mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocomplete_text_view);
+        mWildcardAdapter = new WildcardAdapter(DatabaseHelper.getInstance().getAll(), getApplicationContext());
+        mAutoCompleteTextView.setAdapter(mWildcardAdapter);
+        mAutoCompleteTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mWildcardAdapter.getFilter().filter(s);
+                mWildcardAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mIntent = new Intent(MainActivity.this, StoreActivity.class);
+                ProductModel mProductModel = (ProductModel) parent.getItemAtPosition(position);
+                mIntent.putExtra(MainActivity.PARCELABLE_INTENT_KEY, mProductModel);
+                startActivity(mIntent);
+            }
+        });
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         mEanEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
