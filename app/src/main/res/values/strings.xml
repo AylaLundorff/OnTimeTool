@@ -6,4 +6,7 @@
     <string name="store_info_text">Click for store info</string>
     <string name="title_activity_result_activity">ResultACtivity</string>
     <string name="title_activity_scan">ScanActivity</string>
+    <string name="ean_error">Error: EAN number consists of 13 digits</string>
+    <string name="tun_error">Error: DB/TUN number consists of 7 digits</string>
+
 </resources>

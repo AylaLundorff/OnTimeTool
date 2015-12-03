@@ -15,11 +15,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
+
+import java.util.logging.SocketHandler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -113,13 +116,21 @@ public class MainActivity extends AppCompatActivity {
         mEanEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.ean_error), Toast.LENGTH_SHORT);
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(30);
                 if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
                     Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
                     try {
-                        intent.putExtra(EAN_INTENT_KEY, Long.parseLong(mEanEditText.getText().toString()));
-                        startActivity(intent);
+                        if (mEanEditText.length() != 13) {
+                            toast.show();
+                        } else {
+                            intent.putExtra(EAN_INTENT_KEY, Long.parseLong(mEanEditText.getText().toString()));
+                            startActivity(intent);
+                        }
                     } catch (NumberFormatException ex) {
-                        Toast.makeText(MainActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                        toast.show();
                     }
 
                 }
@@ -129,13 +140,21 @@ public class MainActivity extends AppCompatActivity {
         mDbEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.tun_error), Toast.LENGTH_SHORT);
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(30);
                 if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
                     Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
                     try {
-                        intent.putExtra(DB_TUN_INTENT_KEY, Integer.parseInt(mDbEditText.getText().toString()));
-                        startActivity(intent);
+                        if (mDbEditText.length() != 13) {
+                            toast.show();
+                        } else {
+                            intent.putExtra(DB_TUN_INTENT_KEY, Integer.parseInt(mDbEditText.getText().toString()));
+                            startActivity(intent);
+                        }
                     } catch (NumberFormatException ex) {
-                        Toast.makeText(MainActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                        toast.show();
                     }
                 }
                 return true;
