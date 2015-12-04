@@ -173,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (scanResult != null) {
             Toast.makeText(MainActivity.this, scanResult.getContents(), Toast.LENGTH_SHORT).show();
+            Intent mIntent = new Intent(MainActivity.this, SearchResultActivity.class);
+            mIntent.putExtra(EAN_INTENT_KEY, Long.parseLong(scanResult.getContents()));
+            startActivity(mIntent);
         }
     }
 
