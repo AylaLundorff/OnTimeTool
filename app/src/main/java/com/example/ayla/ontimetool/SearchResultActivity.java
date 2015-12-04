@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,9 @@ import java.util.List;
 public class SearchResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ListView mListView;
-    private EditText mFilterEditText;
+    private AutoCompleteTextView mFilterEditText;
+
+    private WildcardAdapter mWildcardAdapter;
     private ResultAdapter mResultAdapter;
 
     private int dbNumber;
@@ -31,6 +37,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
     private Button mPrice, mDist, mStock, mBack;
     private List<ProductModel> mProductModels;
     private ImageView mLogo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
         mResultAdapter = new ResultAdapter(mProductModels, SearchResultActivity.this);
         mListView.setAdapter(mResultAdapter);
 
+        setWildcardAdapter();
 
         mFilterEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -71,11 +79,32 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+        mFilterEditText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ProductModel mProductModel = (ProductModel) parent.getItemAtPosition(position);
+                eanNumber = mProductModel.ean_number;
+                mProductModels = DatabaseHelper.getInstance().getProductsByEanNumber(eanNumber);
+                mResultAdapter.clear();
+                mResultAdapter.addList(mProductModels);
+                mFilterEditText.getText().clear();
+            }
+        });
+
+        mFilterEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    return true;
+                }
+                return true;
+            }
+        });
     }
 
     private void initializeViews() {
         mListView = (ListView) findViewById(R.id.result_list);
-        mFilterEditText = (EditText) findViewById(R.id.wildcard_text_filter);
+        mFilterEditText = (AutoCompleteTextView) findViewById(R.id.wildcard_text_filter);
         mPrice = (Button) findViewById(R.id.price);
         mDist = (Button) findViewById(R.id.dist);
         mStock = (Button) findViewById(R.id.stock);
@@ -137,5 +166,12 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
             default:
                 break;
         }
+    }
+
+    private void setWildcardAdapter() {
+        List<ProductModel> mProductModels = DatabaseHelper.getInstance().getAll();
+        mWildcardAdapter = new WildcardAdapter(mProductModels, getApplicationContext());
+        mFilterEditText.setAdapter(mWildcardAdapter);
+
     }
 }

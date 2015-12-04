@@ -112,7 +112,7 @@ public class WildcardAdapter extends BaseAdapter implements Filterable {
                 } else {
                     List<ProductModel> suggestions = new ArrayList<>();
                     for (ProductModel item : mProductModels) {
-                        if (item.product_name.toLowerCase().contains(constraint.toString().toLowerCase()))
+                        if (item.product_name.toLowerCase().contains(constraint.toString().toLowerCase()) || item.product_description.toLowerCase().contains(constraint.toString().toLowerCase()))
                             suggestions.add(item);
                     }
 

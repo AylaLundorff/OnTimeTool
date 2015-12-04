@@ -13,7 +13,7 @@
         android:paddingLeft="0dp"
         android:src="@drawable/ontimeheader3"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/wildcard_text_filter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
