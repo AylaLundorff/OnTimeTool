@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
                     Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
                     try {
-                        if (mDbEditText.length() != 13) {
+                        if (mDbEditText.length() != 7) {
                             toast.show();
                         } else {
                             intent.putExtra(DB_TUN_INTENT_KEY, Integer.parseInt(mDbEditText.getText().toString()));
@@ -223,8 +223,8 @@ public class MainActivity extends AppCompatActivity {
 
         ProductModel mProductModel = new ProductModel();
         mProductModel.product_name = "screws";
-        mProductModel.ean_number = 7319665121672l;
-        mProductModel.tun_number = 1673218;
+        mProductModel.ean_number = 5701291370555l;
+        mProductModel.tun_number = 5126333;
         mProductModel.product_description = "NKT Basic Screw with Ruspert 1000 surface. TX20 5.0 x 100/55 mm. 200 pcs";
         mProductModel.product_price = 109.00f;
         mProductModel.price_currency = "DKK";
@@ -263,8 +263,8 @@ public class MainActivity extends AppCompatActivity {
 
         ProductModel mProductModel3 = new ProductModel();
         mProductModel3.product_name = "screws";
-        mProductModel3.ean_number = 7319665121672l;
-        mProductModel3.tun_number = 1673218;
+        mProductModel3.ean_number = 5701291370555l;
+        mProductModel3.tun_number = 5126333;
         mProductModel3.product_description = "NKT Basic Screw with Ruspert 1000 surface. TX20 5.0 x 100/55 mm. 200 pcs.";
         mProductModel3.product_price = 99.95f;
         mProductModel3.price_currency = "DKK";
