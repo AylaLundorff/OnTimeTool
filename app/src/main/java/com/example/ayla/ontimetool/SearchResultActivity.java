@@ -1,6 +1,8 @@
 package com.example.ayla.ontimetool;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +14,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -117,8 +118,14 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
+        String uri = "@drawable/buttonshape";
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable res = getResources().getDrawable(imageResource);
         switch (v.getId()) {
             case R.id.price: {
+                mPrice.setBackgroundColor(Color.GREEN);
+                mDist.setBackgroundResource(R.drawable.buttonshape);
+                mStock.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
                 mResultAdapter.clear();
                 if (dbNumber == 0) {
@@ -130,6 +137,9 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
                 break;
             }
             case R.id.dist: {
+                mDist.setBackgroundColor(Color.GREEN);
+                mPrice.setBackgroundResource(R.drawable.buttonshape);
+                mStock.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
                 mResultAdapter.clear();
                 if (dbNumber == 0) {
@@ -141,6 +151,9 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
                 break;
             }
             case R.id.stock: {
+                mStock.setBackgroundColor(Color.GREEN);
+                mPrice.setBackgroundResource(R.drawable.buttonshape);
+                mDist.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
                 mResultAdapter.clear();
                 if (dbNumber == 0) {
