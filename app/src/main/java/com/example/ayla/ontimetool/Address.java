@@ -7,9 +7,7 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-/**
- * Created by Pop Alex-Cristian on 11/30/2015.
- */
+
 @Table(name = "Address")
 public class Address extends Model implements Parcelable {
 

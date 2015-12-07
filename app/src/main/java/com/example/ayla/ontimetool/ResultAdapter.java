@@ -13,9 +13,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Pop Alex-Cristian on 12/2/2015.
- */
 public class ResultAdapter extends BaseAdapter implements Filterable {
 
     private List<ProductModel> mProductModels;

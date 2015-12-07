@@ -16,9 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Pop Alex-Cristian on 12/2/2015.
- */
+
 public class StoreActivity extends AppCompatActivity {
 
     private ProductModel mProductModel;
@@ -90,7 +88,7 @@ public class StoreActivity extends AppCompatActivity {
         setStorePicture();
         mAddressPlaceholder.setText(mProductModel.address.street_name + " " + mProductModel.address.street_number + ", " + mProductModel.address.zip_code + " " + mProductModel.address.city_name);
 
-        String text = "T. ";
+        String text = "Phone number: ";
         StringBuilder mStringBuilder = new StringBuilder(text);
         int phoneSpanStart = mStringBuilder.length();
         String mPhoneNumber = "" + mProductModel.address.phone_number;

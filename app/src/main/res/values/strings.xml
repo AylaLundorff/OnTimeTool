@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="store_info_text">Click for store info</string>
+    <string name="store_info_text">Store info</string>
     <string name="title_activity_result_activity">ResultACtivity</string>
     <string name="title_activity_scan">ScanActivity</string>
     <string name="ean_error">Error: EAN number consists of 13 digits</string>

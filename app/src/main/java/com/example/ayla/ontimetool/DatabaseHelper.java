@@ -5,9 +5,7 @@ import com.activeandroid.query.Select;
 
 import java.util.List;
 
-/**
- * Created by Pop Alex-Cristian on 11/30/2015.
- */
+
 public class DatabaseHelper {
 
     private static String TAG = DatabaseHelper.class.getSimpleName();

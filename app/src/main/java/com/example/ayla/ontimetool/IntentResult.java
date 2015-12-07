@@ -1,8 +1,6 @@
 package com.example.ayla.ontimetool;
 
-/**
- * Created by Pop Alex-Cristian on 12/3/2015.
- */
+
 public final class IntentResult {
 
     private final String contents;
