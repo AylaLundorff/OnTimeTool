@@ -13,9 +13,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Pop Alex-Cristian on 12/3/2015.
- */
 public class WildcardAdapter extends BaseAdapter implements Filterable {
 
     private List<ProductModel> mProductModels;

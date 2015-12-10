@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         mProductModel.ean_number = 5701291370555l;
         mProductModel.tun_number = 5126333;
         mProductModel.product_description = "NKT Basic Screw with Ruspert 1000 surface. TX20 5.0 x 100/55 mm. 200 pcs";
-        mProductModel.product_price = 109.00f;
+        mProductModel.product_price = 109.95f;
         mProductModel.price_currency = "DKK";
         mProductModel.amount = 10;
         mProductModel.address = mAddress;
@@ -241,10 +241,10 @@ public class MainActivity extends AppCompatActivity {
 
         ProductModel mProductModel1 = new ProductModel();
         mProductModel1.product_name = "screws";
-        mProductModel1.ean_number = 5701291535657l;
-        mProductModel1.tun_number = 1376711;
+        mProductModel1.ean_number = 5701291148468l;
+        mProductModel1.tun_number = 3416096;
         mProductModel1.product_description = "SPUN + stainless steel screws. Kv. A4, 5,0 x 100/55 mm, 200 stk.";
-        mProductModel1.product_price = 89.00f;
+        mProductModel1.product_price = 99.95f;
         mProductModel1.price_currency = "DKK";
         mProductModel1.amount = 7;
         mProductModel1.address = mAddress1;
@@ -254,12 +254,12 @@ public class MainActivity extends AppCompatActivity {
 
         ProductModel mProductModel2 = new ProductModel();
         mProductModel2.product_name = "screws";
-        mProductModel2.ean_number = 5701291535657l;
-        mProductModel2.tun_number = 1376711;
+        mProductModel2.ean_number = 5701291148468l;
+        mProductModel2.tun_number = 3416096;
         mProductModel2.product_description = "SPUN + stainless steel screws. Kv. A4, 5,0 x 100/55 mm, 200 stk.";
-        mProductModel2.product_price = 89.00f;
+        mProductModel2.product_price = 89.95f;
         mProductModel2.price_currency = "DKK";
-        mProductModel2.amount = 5;
+        mProductModel2.amount = 6;
         mProductModel2.address = mAddress2;
         mProductModel2.commercial_text = "Harald Nyborg’s customer card - provides card to your dreams and credit to more";
         mProductModel2.distance = 3900;
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
         mProductModel3.amount = 15;
         mProductModel3.address = mAddress3;
         mProductModel3.commercial_text = "BAUHAUS plus card private - Get the last piece to your dream!";
-        mProductModel3.distance = 3920;
+        mProductModel3.distance = 39200;
         mProductModel3.save();
     }
 }

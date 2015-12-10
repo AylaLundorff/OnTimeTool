@@ -123,7 +123,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
         Drawable res = getResources().getDrawable(imageResource);
         switch (v.getId()) {
             case R.id.price: {
-                mPrice.setBackgroundColor(Color.GREEN);
+                mPrice.setBackgroundColor(Color.LTGRAY);
                 mDist.setBackgroundResource(R.drawable.buttonshape);
                 mStock.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
@@ -137,7 +137,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
                 break;
             }
             case R.id.dist: {
-                mDist.setBackgroundColor(Color.GREEN);
+                mDist.setBackgroundColor(Color.LTGRAY);
                 mPrice.setBackgroundResource(R.drawable.buttonshape);
                 mStock.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
@@ -151,7 +151,7 @@ public class SearchResultActivity extends AppCompatActivity implements View.OnCl
                 break;
             }
             case R.id.stock: {
-                mStock.setBackgroundColor(Color.GREEN);
+                mStock.setBackgroundColor(Color.LTGRAY);
                 mPrice.setBackgroundResource(R.drawable.buttonshape);
                 mDist.setBackgroundResource(R.drawable.buttonshape);
                 List<ProductModel> price_models = new ArrayList<>();
